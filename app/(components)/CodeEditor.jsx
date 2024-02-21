@@ -1,6 +1,7 @@
-"use client";
+"use client"
 
 import React, { useEffect, useState } from "react";
+import dynamic from 'next/dynamic';  
 import {
   EditorState,
   convertToRaw,
@@ -8,10 +9,16 @@ import {
   Modifier,
   RichUtils,
 } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
+
+const Editor = dynamic(
+  () => import('react-draft-wysiwyg').then(mod => mod.Editor),
+  { ssr: false }
+);
+
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 const CodeEditor = () => {
+  
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
@@ -148,27 +155,24 @@ const CodeEditor = () => {
 
   return (
     <>
-      <div className="container flex flex-col justify-center items-center mb-14 pt-8 pb-1">
+    
+      <div className="container flex flex-col justify-center items-center mx-auto max-w-screen-lg mb-14 pt-8 pb-1">
         <div className="flex justify-end right-5 py-5">
           <button
             type="button"
             onClick={saveContent}
-            className="text-white bg-black hover:bg-blue-800 focus:ring-4
-              text-xl rounded-lg text-sm px-5 py-2.5 me-2 mb-2
-            dark:bg-black-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-black-800 w-52
-             hover:cursor-pointer"
+            className="text-white bg-black hover:bg-blue-800 focus:ring-4 text-xl rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-black-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-black-800 w-52 hover:cursor-pointer"
           >
             Save
           </button>
         </div>
-        <div className="editor h-96 overflow-auto w-full mb-7  rounded-md text-black border-5 border-solid border-white bg-white">
+        <div className="editor h-96 overflow-auto w-full mb-7 rounded-md text-black border-5 border-solid border-white bg-white">
           <Editor
             editorState={editorState}
             onEditorStateChange={handleEditorChange}
-            wrapperClassName="w-full h-96 "
-            editorClassName="h-100 overflow-auto px-4 "
+            wrapperClassName="w-full h-96"
+            editorClassName="h-100 overflow-auto px-4"
             customStyleMap={style}
-            
           />
         </div>
       </div>

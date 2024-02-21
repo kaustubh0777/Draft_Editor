@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Credit = () => {
   return (
-    <div className="credit text-white  text-xl flex items-center justify-center  py-5">
+    <div className="credit text-white  text-xl flex items-center justify-center  py-5  w-full h-full">
       <a href="https://github.com/kaustubh0777/Draft_Editor">
         <Image
           src="/github-mark.svg"
