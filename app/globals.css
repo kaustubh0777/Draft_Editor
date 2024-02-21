@@ -1,13 +1,10 @@
-@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-@layer base
-{
-    body
-    {
-        @apply bg-black
+@layer components {
+    body {
+        @apply bg-blue-900; /* Use a dark shade of blue */
         
+        @apply overflow-hidden;
     }
 }
