@@ -1,0 +1,10 @@
+.CodeEditor {
+    /* Custom width and height */
+    width: 600px; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+  
+    /* Border customization */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+  }
